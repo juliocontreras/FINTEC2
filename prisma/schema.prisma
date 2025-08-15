@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id                   Int                  @id @default(autoincrement())
+  email                String               @unique
+  ingresos             Float?
+  gastos               Float?
+  ahorro_actual        Float?
+  nivel_actual         Int?
+  historial_economico  HistorialEconomico[]
+}
+
+model Nivel {
+  id                    Int     @id @default(autoincrement())
+  nombre                String
+  objetivo_euros        Float
+  contenido_educativo   String?
+  condiciones_desbloqueo String?
+}
+
+model EstrategiaFinanciera {
+  id                     Int     @id @default(autoincrement())
+  nombre                 String
+  tipo                   String
+  rentabilidad_esperada  Float
+  riesgo                 String?
+  condiciones_aplicacion String?
+}
+
+model HistorialEconomico {
+  id        Int      @id @default(autoincrement())
+  usuario   Usuario  @relation(fields: [usuarioId], references: [id])
+  usuarioId Int
+  fecha     DateTime
+  patrimonio Float
+}
+
