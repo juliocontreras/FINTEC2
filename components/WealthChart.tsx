@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 import { useStore } from '../store/useStore';
+import CollapsibleCard from './CollapsibleCard';
 
 export default function WealthChart() {
   const ref = useRef<HTMLDivElement>(null);
@@ -35,6 +36,10 @@ export default function WealthChart() {
     };
   }, [data]);
 
-  return <div ref={ref} className="w-full h-80" />;
+  return (
+    <CollapsibleCard title="Gráfico de patrimonio">
+      <div ref={ref} className="w-full h-80" />
+    </CollapsibleCard>
+  );
 }
 

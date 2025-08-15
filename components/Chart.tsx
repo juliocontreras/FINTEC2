@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
+import CollapsibleCard from './CollapsibleCard';
 
 export default function Chart() {
   const ref = useRef<HTMLDivElement>(null);
@@ -19,5 +20,9 @@ export default function Chart() {
     }
   }, []);
 
-  return <div ref={ref} style={{ width: '100%', height: 400 }} />;
+  return (
+    <CollapsibleCard title="Gráfico de ejemplo">
+      <div ref={ref} style={{ width: '100%', height: 400 }} />
+    </CollapsibleCard>
+  );
 }
