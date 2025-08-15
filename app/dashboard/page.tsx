@@ -72,6 +72,15 @@ export default function DashboardPage() {
       >
         Ir al simulador de escenarios
       </Link>
+
+      <section className="mt-6">
+        <h2 className="mb-4 text-xl font-semibold">Vista HTML integrada</h2>
+        <iframe
+          src="/legacy-dashboard.html"
+          className="w-full h-96 rounded border"
+          title="Dashboard HTML"
+        />
+      </section>
     </main>
   );
 }
